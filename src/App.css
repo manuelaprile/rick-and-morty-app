@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+}
+
+body, .card {
+  background: #222831 !important;
+  overflow-x: hidden;
+}
+
+.card{
+  border: none;
+}
+
+.card-style {
+  width: 18rem;
+  padding: 0px;
+  margin: 10px;
+  /* border: 1px solid #fff; */
+}
+
+.card-body {
+  padding: 0.5rem 0rem;
+}
+
+.w-md-auto {width: auto;}
+
+.form-control:focus {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  padding: 5px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.bg-gray {
+  background: #4f4f4f;
+}
+
+@media(max-width: 768px) {
+  .card-style {
+    width: 100%;
+    padding: 0px 20px 0px 0px;  
+  }
+
+  .w-md-auto {width: 100% !important;}
+
+}
