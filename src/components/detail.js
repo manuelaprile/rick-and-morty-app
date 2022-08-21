@@ -1,40 +1,58 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
-function Character({ character }) {
+function CharacterInfo() {
+  const [character, setCharacter] = useState(null);
+  const params = useParams();
+  const getDataCharacter = async (id) => {
+    const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+    const data = await response.json();
+    console.log(data)
+    setCharacter(data);
+  }
+  useEffect(() => {
+    getDataCharacter(params.id, setCharacter)
+  }, [])
   return (
     <>
-      <Card className='card-style position-relative'>
-        <Card.Img variant="top" src={character.image} />
-        <Card.Body style={{ background: '#222831' }}>
-          <Card.Title className='text-light'>{character.name}</Card.Title>
-          <Card.Text className='text-light'>
-            {/* <h5 className='text-light d-inline-block'>Location:</h5> {character.location.name} <br />
-          <h5 className='text-light d-inline-block'>Origin: </h5> {character.origin.name} */}
-            <small>Last Location:</small> <br />
-            <h6 className='text-light d-inline-block'>{character.location.name}</h6>
-            {
-              character.status == 'Alive' ? (
-                <div className='bg-success status'>{character.status}</div>
-              ) : ''
-            }
-            {
-              character.status == 'Dead' ? (
-                <div className='bg-danger status'>{character.status}</div>
-              ) : ''
-            }
-
-            {
-              character.status == 'unknown' ? (
-                <div className='bg-gray status'>{character.status}</div>
-              ) : ''
-            }
-          </Card.Text>
-          <Button variant="primary w-100 rounded-0">See more</Button>
-        </Card.Body>
-      </Card>
+      {character !== null ? (
+        <div className='container'>
+        <h1 className='text-center py-5 text-light'>{character.name}</h1>
+          <div className='row justify-content-center align-items-center'>
+            <div className='col-md-6'>
+              <div className='row g-0'>
+                <div className='col-md-6'>
+                  <div>
+                    <img className='w-100 border-left-radius fit-img' src={character.image} alt={character.name}></img>
+                  </div>
+                </div>
+                <div className='col-md-6 bg-detail border-right-radius'>
+                  <div style={{ 'margin': '20px' }}>
+                    <h4 className='text-light'>Name: {character.name}</h4>
+                    <h5 className='text-light'>Origin: {character.origin.name}</h5>
+                    <h5 className='text-light'>Location: {character.location.name}</h5>
+                    <h5 className='text-light'>Specie: {character.species}</h5>
+                    <h5 className='text-light'>Status: {character.status}</h5>
+                    <h5 className='text-light'>Gender: {character.gender}</h5>
+                    <h5 className='text-light'>Episodes: {character.episode.length}</h5>
+                    <div>
+                      <Link to={{
+                        pathname: `/`,
+                      }}>
+                        <Button variant="primary w-100 rounded-0" className='mt-3'>Back to list</Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : <h1 className='text-light text-center'>Character loading...</h1>}
     </>
   )
 }
 
-export default Character
+export default CharacterInfo

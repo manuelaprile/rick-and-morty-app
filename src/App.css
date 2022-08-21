@@ -41,6 +41,22 @@ body, .card {
   background: #4f4f4f;
 }
 
+.bg-detail {
+  background: rgb(60, 62, 68);
+}
+
+.border-right-radius {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.border-left-radius {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.fit-img {min-height: 370px; object-fit: cover;}
+
 @media(max-width: 768px) {
   .card-style {
     width: 100%;
@@ -48,5 +64,8 @@ body, .card {
   }
 
   .w-md-auto {width: 100% !important;}
+
+  .border-left-radius {border-top-left-radius: 0px; border-bottom-left-radius: 0px;}
+  .border-right-radius {border-top-right-radius: 0px; border-bottom-right-radius: 0px;}
 
 }

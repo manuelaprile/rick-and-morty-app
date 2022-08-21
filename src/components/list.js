@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import Character from './detail'
+import Character from './character'
 import Pagination from './pagination'
 import Search from './search'
 
@@ -28,6 +28,7 @@ function CharactersList() {
   return (
     <>
       <div className='container'>
+      <h1 className='text-center py-5 text-light'>Rick and Morty</h1>
         <Search setSearch={setSearch} search={search} />
         <div className='row justify-content-center'>
           {
