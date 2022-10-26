@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Character({ character }) {
   return (
@@ -33,7 +33,7 @@ function Character({ character }) {
           </Card.Text>
           <Link to={{
             pathname: `character/${character.id}`,
-            state: {characterData: true}
+            state: { characterData: true }
           }}>
             <Button variant="primary w-100 rounded-0" character={character}>See more</Button>
           </Link>

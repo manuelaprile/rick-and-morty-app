@@ -12,10 +12,9 @@ body, .card {
 }
 
 .card-style {
-  width: 18rem;
+  width: 19rem;
   padding: 0px;
   margin: 10px;
-  /* border: 1px solid #fff; */
 }
 
 .card-body {
